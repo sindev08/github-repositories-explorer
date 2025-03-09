@@ -1,5 +1,6 @@
+import { Button } from "~/components/ui/button";
+
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +10,11 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <Welcome />;
+  return (
+    <div className="h-screen w-full bg-slate-100">
+      <div className=" flex items-center justify-center max-w-7xl mx-auto bg-white">
+        <Button>Click me</Button>
+      </div>
+    </div>
+  );
 }
