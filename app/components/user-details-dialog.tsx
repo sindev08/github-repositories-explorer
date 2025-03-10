@@ -4,7 +4,7 @@ import type React from "react";
 
 import { ScrollArea } from "~/components/ui/scroll-area";
 import { Skeleton } from "~/components/ui/skeleton";
-import { ResponsiveDialog } from "./components/ui/responsize-dialog";
+import { ResponsiveDialog } from "./ui/responsize-dialog";
 import type { IGithubRepo } from "types/global";
 
 interface UserDetailsDialogProps {
@@ -15,7 +15,7 @@ interface UserDetailsDialogProps {
   refetchRepos: () => void;
   repos: IGithubRepo[] | undefined;
   EmptyRepos: React.FC;
-  RepoListItem: React.FC<{ repo: any }>;
+  RepoListItem: React.FC<{ repo: IGithubRepo }>;
   ErrorMessage: React.FC<{ message: string; onRetry: () => void }>;
 }
 

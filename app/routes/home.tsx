@@ -7,19 +7,11 @@ import { EmptyRepos } from "~/components/empty-repos";
 import { ErrorMessage } from "~/components/error-message";
 import { RepoListItem } from "~/components/repo-list-item";
 import { useTheme } from "~/components/theme-provider";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "~/components/ui/dialog";
 import { Input } from "~/components/ui/input";
-import { ScrollArea } from "~/components/ui/scroll-area";
 import { Skeleton } from "~/components/ui/skeleton";
+import { UserDetailsDialog } from "~/components/user-details-dialog";
 import { UserListItem } from "~/components/user-list-item";
 import type { Route } from "./+types/home";
-import { UserDetailsDialog } from "~/user-details-dialog";
 
 export function meta({}: Route.MetaArgs) {
   return [
