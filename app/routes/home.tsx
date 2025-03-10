@@ -42,7 +42,6 @@ export default function Home() {
   }, [selectedUser, refetch]);
 
   const { resolvedTheme } = useTheme();
-  console.log(resolvedTheme);
 
   return (
     <div className="h-screen w-full relative">
