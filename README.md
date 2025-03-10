@@ -2,7 +2,7 @@
 
 A React + Vite template powered by shadcn/ui.
 
-Demo Project : [a link](https://github-repositories-explorer-neon.vercel.app/)
+Demo Project : [Demo](https://github-repositories-explorer-neon.vercel.app/)
 
 ## 🎉 Features
 
