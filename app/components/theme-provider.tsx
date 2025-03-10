@@ -60,13 +60,13 @@ export function ThemeProvider({
       finalTheme = theme;
     }
 
-    setResolvedTheme(finalTheme); // Update resolvedTheme
+    setResolvedTheme(finalTheme);
     root.classList.add(finalTheme);
   }, [theme]);
 
   const value = {
     theme,
-    resolvedTheme, // Tambahkan resolvedTheme ke dalam context
+    resolvedTheme,
     setTheme: (theme: Theme) => {
       if (typeof window !== "undefined") {
         localStorage.setItem(storageKey, theme);
