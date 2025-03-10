@@ -19,6 +19,7 @@ import { ScrollArea } from "~/components/ui/scroll-area";
 import { Skeleton } from "~/components/ui/skeleton";
 import { UserListItem } from "~/components/user-list-item";
 import type { Route } from "./+types/home";
+import { UserDetailsDialog } from "~/user-details-dialog";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -78,7 +79,7 @@ export default function Home() {
         alt="Background"
         className="absolute top-0 left-0 h-full w-full object-cover z-[1]"
       />
-      <div className="flex relative items-center h-full justify-center max-w-7xl mx-auto z-10">
+      <div className="flex relative items-center h-full justify-center px-4 xl:px-0 max-w-7xl mx-auto z-10">
         <div className="flex flex-col gap-4 w-full justify-center items-center">
           {/* Search Input */}
           <div className="flex flex-col max-w-lg w-full gap-2">
@@ -98,7 +99,7 @@ export default function Home() {
           {/* User List */}
           <div className="flex flex-col max-w-md w-full gap-2">
             {isLoading ? (
-              Array.from({ length: 3 }).map((_, index) => (
+              Array.from({ length: 5 }).map((_, index) => (
                 <Skeleton key={index} className="h-10 w-full rounded-md" />
               ))
             ) : isError ? (
@@ -124,44 +125,17 @@ export default function Home() {
       </div>
 
       {/* User Detail Dialog */}
-      <Dialog open={!!selectedUser} onOpenChange={handleDialogClose}>
-        <DialogContent className="p-0 gap-0 max-w-md w-full">
-          <DialogHeader className="border-b py-6 px-8">
-            <DialogTitle>User Details</DialogTitle>
-            <DialogDescription>
-              Owned repository -{" "}
-              <span className="font-bold text-primary">{selectedUser}</span>
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="p-4">
-            {isFetching ? (
-              <div className="space-y-3 py-2">
-                {Array.from({ length: 3 }).map((_, index) => (
-                  <Skeleton key={index} className="h-16 w-full rounded-md" />
-                ))}
-              </div>
-            ) : isErrorRepo ? (
-              <ErrorMessage
-                message="An error occurred while loading the repository."
-                onRetry={refetchRepos}
-              />
-            ) : (
-              <ScrollArea className="h-[350px] pr-4">
-                {repos?.length === 0 ? (
-                  <EmptyRepos />
-                ) : (
-                  <ul className="space-y-3 py-2">
-                    {repos?.map((repo) => (
-                      <RepoListItem key={repo.name} repo={repo} />
-                    ))}
-                  </ul>
-                )}
-              </ScrollArea>
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
+      <UserDetailsDialog
+        selectedUser={selectedUser}
+        handleDialogClose={handleDialogClose}
+        isFetching={isFetching}
+        isErrorRepo={isErrorRepo}
+        refetchRepos={refetchRepos}
+        repos={repos}
+        EmptyRepos={EmptyRepos}
+        RepoListItem={RepoListItem}
+        ErrorMessage={ErrorMessage}
+      />
     </div>
   );
 }
