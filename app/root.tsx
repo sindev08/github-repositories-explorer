@@ -9,9 +9,8 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ThemeProvider } from "./components/theme-provider";
 import Navbar from "./components/navbar";
+import Providers from "./components/providers";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -27,8 +26,6 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  // Create a client
-  const queryClient = new QueryClient();
   return (
     <html lang="en">
       <head>
@@ -38,14 +35,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-          <QueryClientProvider client={queryClient}>
-            <Navbar />
-            {children}
-            <ScrollRestoration />
-            <Scripts />
-          </QueryClientProvider>
-        </ThemeProvider>
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
+        <ScrollRestoration />
+        <Scripts />
       </body>
     </html>
   );
