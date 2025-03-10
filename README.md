@@ -1,87 +1,76 @@
-# Welcome to React Router!
+# Project - GitHub repositories explorer
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A React + Vite template powered by shadcn/ui.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## 🎉 Features
 
-## Features
+- **React** - A JavaScript library for building user interfaces.
+- **Vite** - A fast, opinionated frontend build tool.
+- **TypeScript** - A typed superset of JavaScript that compiles to plain JavaScript.
+- **Tailwind CSS** - A utility-first CSS framework.
+- **Tailwind Prettier Plugin** - A Prettier plugin for formatting Tailwind CSS classes.
+- **shadcn/ui** - Beautifully designed components that you can copy and paste into your apps.
+- **@tanstack/react-query** - Powerful asynchronous state management for TS/JS, React, Solid, Vue and Svelte.
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## ⚙️ Prerequisites
 
-## Getting Started
+Make sure you have the following installed on your development machine:
 
-### Installation
+- Node.js (version 16 or above. Recomendation v20)
+- npm (package manager)
 
-Install the dependencies:
+## 🚀 Getting Started
 
-```bash
-npm install
+Follow these steps to get started with the github-repositories-explorer template:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/sindev08/github-repositories-explorer.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd github-repositories-explorer
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm dev
+   ```
+
+## 📜 Available Scripts
+
+- npm dev - Starts the development server.
+- npm build - Builds the production-ready code.
+- npm start - Starts the production server.
+- npm typecheck - Checks the types in your code and ensures they align with your React Router configuration.
+
+## 📂 Project Structure
+
+The project structure follows a standard React application layout:
+
+```python
+github-repositories-explorer/
+  ├── node_modules/      # Project dependencies
+  ├── public/            # Public assets
+  ├── api/               # Provide api
+  ├── app/               # Application source code
+  │   ├── components/    # React components
+  │   │   └── ui/        # shadc/ui components
+  │   ├── lib/           # Utility functions
+  │   ├── App.tsx        # Application entry point
+  │   └── index.tsx      # Main rendering file
+  ├── hooks              # Hooks functions
+  ├── lib                # Utility functions
+  ├── tsconfig.json      # TypeScript configuration
+  └── vite.config.ts     # Vite configuration
 ```
-
-### Development
-
-Start the development server with HMR:
-
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
