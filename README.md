@@ -18,7 +18,7 @@ Demo Project : [Demo](https://github-repositories-explorer-neon.vercel.app/)
 
 Make sure you have the following installed on your development machine:
 
-- Node.js (version 16 or above. Recomendation v20)
+- Node.js (version 16 or above. Recommendation v20)
 - npm (package manager)
 
 ## 🚀 Getting Started
