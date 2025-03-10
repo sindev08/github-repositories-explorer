@@ -2,7 +2,7 @@ import { useDebounce } from "hooks/useDebonce";
 import { useSearchUsers } from "hooks/useSearchUsers";
 import { useUserRepos } from "hooks/useUserRepos";
 import { Search } from "lucide-react";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { EmptyRepos } from "~/components/empty-repos";
 import { ErrorMessage } from "~/components/error-message";
 import { RepoListItem } from "~/components/repo-list-item";
@@ -56,9 +56,18 @@ export default function Home() {
     setSelectedUser(null);
   }, []);
 
+  const [mounted, setMounted] = useState(false);
+
+  // Update useEffect to handle mounting state
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const currentTheme = mounted ? resolvedTheme : "light"; // Default to light as fallback
+
   const backgroundImage = useMemo(
-    () => (resolvedTheme === "dark" ? "./home-dark.webp" : "./home-light.webp"),
-    [resolvedTheme]
+    () => (currentTheme === "dark" ? "./home-dark.webp" : "./home-light.webp"),
+    [currentTheme]
   );
 
   return (
