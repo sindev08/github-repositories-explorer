@@ -9,7 +9,13 @@ const axiosInstance = axios.create({
 
 // Interceptor to add authorization if needed
 axiosInstance.interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`;
+  const token = import.meta.env.VITE_GITHUB_TOKEN;
+
+  // Only add the Authorization header if the token exists
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
   return config;
 });
 
