@@ -10,11 +10,13 @@ type ThemeProviderProps = {
 
 type ThemeProviderState = {
   theme: Theme;
+  resolvedTheme: "dark" | "light";
   setTheme: (theme: Theme) => void;
 };
 
 const initialState: ThemeProviderState = {
   theme: "system",
+  resolvedTheme: "light",
   setTheme: () => null,
 };
 
@@ -26,7 +28,6 @@ export function ThemeProvider({
   storageKey = "vite-ui-theme",
   ...props
 }: ThemeProviderProps) {
-  // Cek apakah window tersedia (hanya di browser)
   const getStoredTheme = () => {
     if (typeof window !== "undefined") {
       return (localStorage.getItem(storageKey) as Theme) || defaultTheme;
@@ -35,6 +36,13 @@ export function ThemeProvider({
   };
 
   const [theme, setTheme] = useState<Theme>(getStoredTheme);
+  const [resolvedTheme, setResolvedTheme] = useState<"dark" | "light">(
+    theme === "system"
+      ? window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light"
+      : theme
+  );
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -42,20 +50,23 @@ export function ThemeProvider({
     const root = window.document.documentElement;
     root.classList.remove("light", "dark");
 
+    let finalTheme: "dark" | "light";
+
     if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
+      finalTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
         : "light";
-      root.classList.add(systemTheme);
-      return;
+    } else {
+      finalTheme = theme;
     }
 
-    root.classList.add(theme);
+    setResolvedTheme(finalTheme); // Update resolvedTheme
+    root.classList.add(finalTheme);
   }, [theme]);
 
   const value = {
     theme,
+    resolvedTheme, // Tambahkan resolvedTheme ke dalam context
     setTheme: (theme: Theme) => {
       if (typeof window !== "undefined") {
         localStorage.setItem(storageKey, theme);
@@ -74,8 +85,9 @@ export function ThemeProvider({
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext);
 
-  if (context === undefined)
+  if (context === undefined) {
     throw new Error("useTheme must be used within a ThemeProvider");
+  }
 
   return context;
 };
