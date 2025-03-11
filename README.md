@@ -39,11 +39,9 @@ Follow these steps to get started with the github-repositories-explorer template
 
 3. Add Environment Variables:
 
-Copy the example environment variables file:
-
-```bash
-cp .env.example .env
-```
+   ```bash
+   cp .env.example .env
+   ```
 
 4. Add or Edit the GitHub Classic Token:
 
