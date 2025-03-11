@@ -37,13 +37,29 @@ Follow these steps to get started with the github-repositories-explorer template
    cd github-repositories-explorer
    ```
 
-3. Install the dependencies:
+3. Add Environment Variables:
+
+Copy the example environment variables file:
+
+```bash
+cp .env.example .env
+```
+
+4. Add or Edit the GitHub Classic Token:
+
+   ```bash
+   VITE_GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   ```
+
+   Note: Replace ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx with your actual GitHub Classic Token.
+
+5. Install the dependencies:
 
    ```bash
    npm install
    ```
 
-4. Start the development server:
+6. Start the development server:
 
    ```bash
    npm dev
